@@ -1,4 +1,4 @@
-const serverUrl = "http://lpo.ddns.net:8080/webtracer";
+const serverUrl = "http://localhost/webtracer";
 var timeInternal = 0;
 var userId = "";
 var domain = "";
@@ -31,7 +31,11 @@ function capture(type, data)
                 data.imageData = "NO";
                 //data.Time-=0.2;
                 Post(type, data);
-            }else{
+            }else if(type=="voice"){
+                data.imageData = "NO";
+                //data.Time-=0.2;
+                Post(type, data);
+            } else {
 				if((type=="move" || type=="freeze") && shot<7){
 					data.imageData = "NO";
 					Post(type, data);              
